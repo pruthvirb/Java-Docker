@@ -32,3 +32,14 @@ steps:
     artifactoryConnection: 'hts2'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+- task: JFrogBuildPromotion@1
+  inputs:
+    artifactoryConnection: 'hts2'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    targetRepo: 'docker-local-test'
+    status: 'Released'
+    sourceRepo: 'docker-local'
+    includeDependencies: false
+    copy: true
+    dryRun: false
