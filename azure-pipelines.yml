@@ -9,28 +9,28 @@ variables:
 steps:
 - task: ArtifactoryToolsInstaller@1
   inputs:
-    artifactoryService: 'Kayal'
+    artifactoryService: 'hts1'
     cliInstallationRepo: 'jfrog-cli'
     installCustomVersion: true
     cliVersion: '1.46.0'
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository: swarnenduk-docker-local.jfrog.io/$(imageName)
+    repository: docker login hts1-docker-local.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
 - task: ArtifactoryDocker@1
   inputs:
     command: 'push'
-    artifactoryService: 'Kayal'
+    artifactoryService: 'hts1'
     targetRepo: 'docker-local'
-    imageName: 'swarnenduk-docker-local.jfrog.io/$(imageName):$(Build.BuildId)'
+    imageName: 'docker login hts1-docker-local.jfrog.io/$(imageName):$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: Kayal
+    artifactoryService: 'hts1'
     buildName: $(Build.DefinitionName)
     buildNumber: $(Build.BuildNumber)
