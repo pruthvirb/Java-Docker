@@ -21,13 +21,12 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts2'
-    imageName: 'docker login hts1-docker-local.jfrog.io/$(imageName):$(Build.BuildId)'
+    imageName: 'hts1-docker-local.jfrog.io/$(imageName):Latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     threads: '3'
-    skipLogin: false'
-    includeEnvVars: true
+    skipLogin: false
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts2'
