@@ -17,12 +17,16 @@ steps:
     repository: docker login hts1-docker-local.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-- task: ArtifactoryDocker@1
+- task: JFrogDocker@1
   inputs:
-    command: 'push'
-    artifactoryService: 'hts2'
-    targetRepo: 'docker-local'
+    command: 'Push'
+    artifactoryConnection: 'hts2'
     imageName: 'docker login hts1-docker-local.jfrog.io/$(imageName):$(Build.BuildId)'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    threads: '3'
+    skipLogin: false'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
