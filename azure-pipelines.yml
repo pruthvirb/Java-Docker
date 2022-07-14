@@ -27,9 +27,6 @@ steps:
     buildNumber: '$(Build.BuildNumber)'
     threads: '3'
     skipLogin: false'
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
 - task: JFrogPublishBuildInfo@1
   inputs:
