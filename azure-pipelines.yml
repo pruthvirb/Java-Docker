@@ -10,7 +10,7 @@ steps:
 - task: JFrogToolsInstaller@1
   inputs:
     artifactoryConnection: 'hts2'
-    cliInstallationRepo: 'jfrog-cli'
+    cliInstallationRepo: 'jfrog-cli-v2-new'
 - task: Docker@2
   displayName: Build an image
   inputs:
