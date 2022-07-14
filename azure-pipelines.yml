@@ -21,7 +21,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts2'
-    imageName: 'hts1-docker-local.jfrog.io/$(imageName):Latest'
+    imageName: 'hts1.jfrog.io/docker-local/$(imageName):Latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
