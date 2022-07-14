@@ -31,8 +31,8 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
-- task: ArtifactoryPublishBuildInfo@1
+- task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryService: 'hts2'
-    buildName: $(Build.DefinitionName)
-    buildNumber: $(Build.BuildNumber)
+    artifactoryConnection: 'hts2'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
