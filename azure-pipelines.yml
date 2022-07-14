@@ -7,12 +7,10 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
-- task: ArtifactoryToolsInstaller@1
+- task: JFrogToolsInstaller@1
   inputs:
-    artifactoryService: 'hts1'
+    artifactoryConnection: 'hts2'
     cliInstallationRepo: 'jfrog-cli'
-    installCustomVersion: true
-    cliVersion: '1.46.0'
 - task: Docker@2
   displayName: Build an image
   inputs:
@@ -22,7 +20,7 @@ steps:
 - task: ArtifactoryDocker@1
   inputs:
     command: 'push'
-    artifactoryService: 'hts1'
+    artifactoryService: 'hts2'
     targetRepo: 'docker-local'
     imageName: 'docker login hts1-docker-local.jfrog.io/$(imageName):$(Build.BuildId)'
     collectBuildInfo: true
@@ -31,6 +29,6 @@ steps:
     includeEnvVars: true
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryService: 'hts1'
+    artifactoryService: 'hts2'
     buildName: $(Build.DefinitionName)
     buildNumber: $(Build.BuildNumber)
