@@ -32,3 +32,10 @@ steps:
     artifactoryConnection: 'hts2'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+- task: JFrogBuildScan@1
+  inputs:
+    xrayConnection: 'hts2-xray'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    allowFailBuild: true
+    vuln: false
