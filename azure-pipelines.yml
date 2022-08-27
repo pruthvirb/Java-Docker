@@ -9,7 +9,7 @@ variables:
 steps:
 - task: JFrogToolsInstaller@1
   inputs:
-    artifactoryConnection: 'hts2-latest'
+    artifactoryConnection: 'hts-latest'
     cliInstallationRepo: 'jfrog-cli-v2-new'
 - task: Docker@2
   displayName: Build an image
@@ -20,7 +20,7 @@ steps:
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
-    artifactoryConnection: 'hts2-latest'
+    artifactoryConnection: 'hts-latest'
     imageName: 'hts2-engie-docker-local.jfrog.io/engie-javascript-docker:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
@@ -29,6 +29,6 @@ steps:
     skipLogin: false
 - task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryConnection: 'hts2-latest'
+    artifactoryConnection: 'hts-latest'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
