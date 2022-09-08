@@ -7,9 +7,9 @@ variables:
   imageName: 'engie-javascript-docker'
 
 steps:
-- task: JFrogToolsInstaller@1
+- task: ArtifactoryToolsInstaller@1
   inputs:
-    artifactoryConnection: 'hts-latest'
+    artifactoryService: 'hts-old-cli'
     cliInstallationRepo: 'cli-old'
     installCustomVersion: true
     cliVersion: '1.53.2'
