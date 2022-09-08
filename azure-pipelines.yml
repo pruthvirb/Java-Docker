@@ -10,7 +10,9 @@ steps:
 - task: JFrogToolsInstaller@1
   inputs:
     artifactoryConnection: 'hts-latest'
-    cliInstallationRepo: 'jfrog-cli-v2-new'
+    cliInstallationRepo: 'cli-old'
+    installCustomVersion: true
+    cliVersion: '1.53.2'
 - task: Docker@2
   displayName: Build an image
   inputs:
