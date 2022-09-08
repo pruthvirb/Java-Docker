@@ -11,13 +11,13 @@ steps:
   inputs:
     artifactoryService: 'hts-old-cli'
     cliInstallationRepo: 'cli-old'
-- task: Docker@2
+- task: ArtifactoryDocker@1
   displayName: Build an image
   inputs:
     repository: hts2-onc-docker-source.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-- task: JFrogDocker@1
+- task: ArtifactoryDocker@1
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
