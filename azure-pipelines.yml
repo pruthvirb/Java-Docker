@@ -33,15 +33,3 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     projectKey: 'onc'
-- task: JFrogBuildPromotion@1
-  inputs:
-    artifactoryConnection: 'hts2'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    targetRepo: 'onc-docker-prd'
-    status: 'Released'
-    sourceRepo: 'onc-docker-source'
-    includeDependencies: true
-    copy: true
-    dryRun: false
-    projectKey: 'onc'
