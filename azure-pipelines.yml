@@ -37,7 +37,6 @@ steps:
     artifactoryConnection: 'hts2'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    projectKey: 'onc'
     targetRepo: 'onc-docker-prd'
     status: 'Released'
     sourceRepo: 'onc-docker-source'
