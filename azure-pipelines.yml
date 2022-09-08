@@ -7,17 +7,17 @@ variables:
   imageName: 'engie-javascript-docker'
 
 steps:
-- task: ArtifactoryToolsInstaller@1
+- task: JFrogToolsInstaller@1
   inputs:
-    artifactoryService: 'hts-old-cli'
-    cliInstallationRepo: 'cli-old'
-- task: ArtifactoryDocker@1
+    artifactoryConnection: 'hts-latest'
+    cliInstallationRepo: 'jfrog-cli'
+- task: Docker@2
   displayName: Build an image
   inputs:
     repository: hts2-onc-docker-source.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-- task: ArtifactoryDocker@1
+- task: JFrogDocker@1
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
@@ -32,6 +32,7 @@ steps:
     artifactoryConnection: 'hts2'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
 - task: JFrogBuildPromotion@1
   inputs:
     artifactoryConnection: 'hts2'
@@ -43,3 +44,4 @@ steps:
     includeDependencies: true
     copy: true
     dryRun: false
+    projectKey: 'onc'
