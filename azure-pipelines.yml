@@ -20,21 +20,23 @@ steps:
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
-    artifactoryConnection: 'hts-latest'
+    artifactoryConnection: 'hts-old-cli'
     imageName: 'hts2-onc-docker-source.jfrog.io/engie-javascript-docker:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     threads: '3'
     skipLogin: false
+    projectKey: 'onc'
 - task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryConnection: 'hts2'
+    artifactoryConnection: 'hts-old-cli'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
 - task: JFrogBuildPromotion@1
   inputs:
-    artifactoryConnection: 'hts2'
+    artifactoryConnection: 'hts-old-cli'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     targetRepo: 'onc-docker-prd'
@@ -43,3 +45,4 @@ steps:
     includeDependencies: true
     copy: true
     dryRun: false
+    projectKey: 'onc'
