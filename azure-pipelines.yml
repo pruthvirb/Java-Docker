@@ -7,7 +7,6 @@ jobs:
     vmImage: 'Ubuntu-18.04'
   variables:
     imageName: 'one-configurator'
-steps:
 - task: JFrogToolsInstaller@1
   inputs:
     artifactoryConnection: 'hts-latest'
