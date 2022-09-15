@@ -6,6 +6,8 @@ pool:
 
 variables:
   imageName: 'one-configurator'
+  imageName: 'one-configurator-core'
+  imageName: 'one-configurator-frontend'
 
 steps:
 - task: JFrogToolsInstaller@1
