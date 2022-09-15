@@ -5,7 +5,7 @@ pool:
   vmImage: 'Ubuntu-18.04'
 
 variables:
-  imageName: 'engie-javascript-docker'
+  imageName: 'onc-configuration'
 
 steps:
 - task: JFrogToolsInstaller@1
