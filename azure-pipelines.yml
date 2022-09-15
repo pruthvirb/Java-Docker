@@ -34,7 +34,6 @@ steps:
     vmImage: 'Ubuntu-18.04'
   variables:
     imageName: 'one-configurator-core'
-
 steps:
 - task: JFrogToolsInstaller@1
   inputs:
