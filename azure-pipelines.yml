@@ -21,7 +21,7 @@ steps:
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
-    artifactoryConnection: 'hts-old-cli'
+    artifactoryConnection: 'hts-latest'
     imageName: 'hts2-onc-docker-source.jfrog.io/one-configurator:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
@@ -31,13 +31,13 @@ steps:
     projectKey: 'onc'
 - task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryConnection: 'hts-old-cli'
+    artifactoryConnection: 'hts-latest'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     projectKey: 'onc'
 - task: JFrogBuildPromotion@1
   inputs:
-    artifactoryConnection: 'hts-old-cli'
+    artifactoryConnection: 'hts-latest'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     targetRepo: 'onc-docker-prd'
