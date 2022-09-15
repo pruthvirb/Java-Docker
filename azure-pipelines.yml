@@ -7,7 +7,7 @@ jobs:
     vmImage: 'Ubuntu-18.04'
   variables:
     imageName: 'one-configurator'
-    - steps:
+  - steps:
     - task: JFrogToolsInstaller@1
     inputs:
     artifactoryConnection: 'hts-latest'
@@ -40,8 +40,8 @@ jobs:
     repository: hts2-onc-docker-source.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-- task: JFrogDocker@1
-  inputs:
+    - task: JFrogDocker@1
+    inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
     imageName: 'hts2-onc-docker-source.jfrog.io/one-configurator:$(Build.BuildId)'
