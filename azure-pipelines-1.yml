@@ -19,7 +19,7 @@ steps:
 - task: JFrogBuildPromotion@1
   inputs:
     artifactoryConnection: 'hts-latest'
-    buildName: 'one-configurator-core'
+    buildName: 'one-configurator'
     buildNumber: '20221111.3'
     projectKey: 'onec'
     targetRepo: 'onec-docker-prod'
