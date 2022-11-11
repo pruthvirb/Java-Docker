@@ -32,6 +32,6 @@ steps:
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts-latest'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    buildName: 'one-configurator'
+    buildNumber: '1.1.667-oc-core'
     projectKey: 'onec'
