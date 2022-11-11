@@ -1,0 +1,31 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+
+- master
+pool:
+  vmImage: 'Ubuntu-18.04'
+
+variables:
+  imageName: 'one-configurator-core'
+
+steps:
+- task: JFrogToolsInstaller@1
+  inputs:
+    artifactoryConnection: 'hts-latest'
+    cliInstallationRepo: 'jfrog-cli-v2-new'
+- task: JFrogBuildPromotion@1
+  inputs:
+    artifactoryConnection: 'hts-latest'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onec'
+    targetRepo: 'onec-docker-prod'
+    status: 'Released'
+    sourceRepo: 'onec-docker-dev'
+    includeDependencies: true
+    copy: true
+    dryRun: false
+
