@@ -6,6 +6,7 @@ pool:
 
 variables:
   imageName: 'one-configurator-core'
+  imageName: 'one-configurator-frontend'
 
 steps:
 - task: JFrogToolsInstaller@1
@@ -22,7 +23,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:$(Build.BuildId)'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
@@ -33,24 +34,13 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:$(Build.BuildId)'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-frontend:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     threads: '3'
     skipLogin: false
-    projectKey: 'onc'
-- task: JFrogDocker@1
-  inputs:
-    command: 'Push'
-    artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onc-docker-dev.jfrog.io/one-configurator-frontend:$(Build.BuildId)'
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    threads: '3'
-    skipLogin: false
-    projectKey: 'onc'
+    projectKey: 'onec'
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts-latest'
