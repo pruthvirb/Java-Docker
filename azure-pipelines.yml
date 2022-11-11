@@ -5,8 +5,7 @@ pool:
   vmImage: 'Ubuntu-18.04'
 
 variables:
-  imageName: 'one-configurator-core'
-  imageName: 'one-configurator-frontend'
+  imageName: 'one-configurator-core' 'one-configurator-frontend'
 
 steps:
 - task: JFrogToolsInstaller@1
