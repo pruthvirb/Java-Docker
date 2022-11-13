@@ -33,7 +33,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:$(Build.BuildId:latest)'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
