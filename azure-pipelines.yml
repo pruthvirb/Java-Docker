@@ -29,7 +29,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:1.1.702-oc-core'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:1.1.702-oc-core'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '1.1.702-oc-core'
@@ -40,7 +40,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:latest'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '1.1.702-oc-core'
