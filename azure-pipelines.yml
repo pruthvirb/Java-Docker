@@ -53,3 +53,15 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     projectKey: 'onec'
+- task: JFrogBuildPromotion@1
+  inputs:
+    artifactoryConnection: 'hts-latest'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onec'
+    targetRepo: 'onec-docker-prod'
+    status: 'Released'
+    sourceRepo: 'onec-docker-dev'
+    includeDependencies: true
+    copy: true
+    dryRun: false
