@@ -29,6 +29,18 @@ steps:
     threads: '3'
     skipLogin: false
     projectKey: 'onec'
+- task: JFrogDocker@1
+  inputs:
+    command: 'Push'
+    artifactoryConnection: 'hts-latest'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:$(Build.BuildId):latest'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    threads: '3'
+    skipLogin: false
+    projectKey: 'onec'
+
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts-latest'
