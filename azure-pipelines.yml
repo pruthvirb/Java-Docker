@@ -5,7 +5,7 @@ pool:
   vmImage: 'Ubuntu-18.04'
 
 variables:
-  imageName: 'one-configurator-core'
+  imageName: 'one-configurator'
 
 steps:
 - task: JFrogToolsInstaller@1
@@ -18,7 +18,7 @@ steps:
     repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-    tags: '1.1.701-oc-core'
+    tags: '1.1.702-oc-core'
 - task: Docker@2
   inputs:
     repository: 'hts2-onec-docker-dev.jfrog.io/$(imageName)'
@@ -29,10 +29,10 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:1.1.701-oc-core'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:1.1.702-oc-core'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    buildNumber: '1.1.702-oc-core'
     threads: '3'
     skipLogin: false
     projectKey: 'onec'
@@ -43,7 +43,7 @@ steps:
     imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator-core:latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    buildNumber: '1.1.702-oc-core'
     threads: '3'
     skipLogin: false
     projectKey: 'onec'
