@@ -15,6 +15,18 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
+    repository: hts2-onec-docker-dev.jfrog.io/$(imageName):latest
+    command: build
+    Dockerfile: app/Dockerfile
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
+- task: Docker@2
+  displayName: Build an image
+  inputs:
     repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
