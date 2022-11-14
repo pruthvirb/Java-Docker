@@ -20,7 +20,7 @@ steps:
   inputs:
     artifactoryConnection: 'hts-latest'
     buildName: 'one-configurator'
-    buildNumber: '1.1.708-oc-core'
+    buildNumber: '1.1.709-oc-core'
     projectKey: 'onec'
     targetRepo: 'onec-docker-prod'
     status: 'Released'
