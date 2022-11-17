@@ -18,15 +18,15 @@ steps:
     repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-    tags: '1.1.710-oc-core'
+    tags: '1.1.711-oc-core'
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:1.1.710-oc-core'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:1.1.711-oc-core'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '1.1.710-oc-core'
+    buildNumber: '1.1.711-oc-core'
     threads: '3'
     skipLogin: false
     projectKey: 'onec'
@@ -34,5 +34,5 @@ steps:
   inputs:
     artifactoryConnection: 'hts-latest'
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '1.1.710-oc-core'
+    buildNumber: '1.1.711-oc-core'
     projectKey: 'onec'
