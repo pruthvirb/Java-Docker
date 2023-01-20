@@ -5,31 +5,30 @@ pool:
   vmImage: 'Ubuntu-18.04'
 
 variables:
-  imageName: 'one-configurator'
+  imageName: 'pipelines-javascript-docker'
 
 steps:
-- task: JFrogToolsInstaller@1
-  inputs:
-    artifactoryConnection: 'hts-latest'
-    cliInstallationRepo: 'jfrog-cli-v2-new'
 - task: Docker@2
   displayName: Build an image
   inputs:
     repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-    tags: '1.1.711-oc-core'
+    tags: 'latest'
+- task: ArtifactoryDocker@1
+  inputs:
+    command: 'push'
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts-latest'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/one-configurator:1.1.711-oc-core'
+    imageName: 'hts2-onec-docker-dev.jfrog.io/pipelines-javascript-docker:latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '1.1.711-oc-core'
+    buildNumber: 'latest'
     threads: '3'
     skipLogin: false
-    projectKey: 'onec'
+    
 - task: JFrogPublishBuildInfo@1
   inputs:
     artifactoryConnection: 'hts-latest'
