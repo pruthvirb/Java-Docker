@@ -24,12 +24,7 @@ steps:
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    includeEnvVars: true'
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: 'latest'
-    threads: '3'
-    skipLogin: false
+    includeEnvVars: true
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
     artifactoryService: 'hts-latest'
