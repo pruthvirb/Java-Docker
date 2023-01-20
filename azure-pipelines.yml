@@ -18,20 +18,20 @@ steps:
 - task: ArtifactoryDocker@1
   inputs:
     command: 'push'
-- task: JFrogDocker@1
-  inputs:
-    command: 'Push'
-    artifactoryConnection: 'hts-latest'
+    artifactoryService: 'hts-latest'
+    targetRepo: 'onec-docker-dev'
     imageName: 'hts2-onec-docker-dev.jfrog.io/pipelines-javascript-docker:latest'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    includeEnvVars: true'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: 'latest'
     threads: '3'
     skipLogin: false
-    
-- task: JFrogPublishBuildInfo@1
+- task: ArtifactoryPublishBuildInfo@1
   inputs:
-    artifactoryConnection: 'hts-latest'
+    artifactoryService: 'hts-latest'
     buildName: '$(Build.DefinitionName)'
-    buildNumber: '1.1.711-oc-core'
-    projectKey: 'onec'
+    buildNumber: '$(Build.BuildNumber)'
