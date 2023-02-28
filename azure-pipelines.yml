@@ -24,7 +24,6 @@ steps:
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-    includeEnvVars: true
 - task: ArtifactoryPublishBuildInfo@1
   inputs:
     artifactoryService: 'hts-latest'
