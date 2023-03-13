@@ -11,21 +11,37 @@ steps:
 - task: Docker@2
   displayName: Build an image
   inputs:
-    repository: hts2-onec-docker-dev.jfrog.io/$(imageName)
+    repository: hts2-onc-docker-source.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
     tags: 'latest'
-- task: ArtifactoryDocker@1
+- task: JFrogDocker@1
   inputs:
-    command: 'push'
-    artifactoryService: 'hts-latest'
-    targetRepo: 'onec-docker-dev'
-    imageName: 'hts2-onec-docker-dev.jfrog.io/pipelines-javascript-docker:latest'
+    command: 'Push'
+    artifactoryConnection: 'hts2v2artifactory'
+    imageName: 'hts2-onc-docker-source.jfrog.io/pipelines-javascript-docker:latest'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-- task: ArtifactoryPublishBuildInfo@1
+    projectKey: 'onc'
+    includeEnvVars: true
+    threads: '3'
+    skipLogin: false
+- task: JFrogPublishBuildInfo@1
   inputs:
-    artifactoryService: 'hts-latest'
+    artifactoryConnection: 'hts2v2artifactory'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
+- task: JFrogBuildPromotion@1
+  inputs:
+    artifactoryConnection: 'hts2v2artifactory'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
+    targetRepo: 'onc-docker-prd'
+    status: 'Released'
+    sourceRepo: 'onc-docker-source'
+    includeDependencies: true
+    copy: true
+    dryRun: false
