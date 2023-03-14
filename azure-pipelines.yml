@@ -14,12 +14,12 @@ steps:
     repository: hts2-onc-docker-source.jfrog.io/$(imageName)
     command: build
     Dockerfile: app/Dockerfile
-    tags: 'latest'
+    tags: '1.151.2'
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
     artifactoryConnection: 'hts2v2artifactory'
-    imageName: 'hts2-onc-docker-source.jfrog.io/pipelines-javascript-docker:latest'
+    imageName: 'hts2-onc-docker-source.jfrog.io/pipelines-javascript-docker:1.151.2'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
@@ -45,3 +45,11 @@ steps:
     includeDependencies: true
     copy: true
     dryRun: false
+- task: JFrogBuildScan@1
+  inputs:
+    xrayConnection: 'hts2-xray'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
+    allowFailBuild: true
+    vuln: false
