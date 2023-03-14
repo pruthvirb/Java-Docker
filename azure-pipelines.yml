@@ -45,6 +45,12 @@ steps:
     includeDependencies: true
     copy: true
     dryRun: false
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'hts2v2artifactory'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'onc'
 - task: JFrogBuildScan@1
   inputs:
     xrayConnection: 'hts2-xray'
